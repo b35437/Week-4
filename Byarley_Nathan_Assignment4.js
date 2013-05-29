@@ -70,30 +70,50 @@ var myLibrary = function() {
 	}
 	
 // strings seperated by strings
-	var stringChange = function(first, second, third) {
+	var stringChange = function(items, sepItems1, sepItems2) {
 	//local variables
 		var message = "";
-		var sepArray = first.split(second);
+		var sepArray = items.split(sepItems1);
 		var i = 0;
 		//while loop going through each argument
 		while(i < sepArray.length) {
 			var newChange = sepArray[i];
-			i++
-			message += newChange + third;
+			i++;
+			message += newChange + sepItems2;
 		}
 		return message;
 	}
 
+//string number function
+	var stringNumber = function(findNumber) {
+		var getNumber = findNumber;
+		newGetNumber = parseFloat(findNumber);
+		return newGetNumber;
+	}
 
 
-
+// number of decimal places
+	var numberToDecimal = function(place) {
+		var decimalPlace = place.toFixed(2);
+		
+		return decimalPlace;
+	}
+	
+//fuzzy-match
+	
+	
+	
+	
+	
 //Return Object
 	return {
 		"phoneNumberCheck" : phoneNumberCheck,
 		"emailCheck"       : emailCheck,
 		"urlCheck"		   : urlCheck,
 		"wordSplit"        : wordSplit,
-		"stringChange"     : stringChange
+		"stringChange"     : stringChange,
+		"stringNumber"     : stringNumber,
+		"numberToDecimal"  : numberToDecimal
 	}//end return object
 	
 }//end library function
@@ -110,6 +130,8 @@ console.log(newLib.urlCheck("http://www.perfectworld.com")); // correct URL
 console.log(newLib.urlCheck("www.perfectworld.com"));//incorrect URL
 console.log(newLib.wordSplit("To day is the day"));
 console.log(newLib.stringChange("tic,tac,toe",",","/"));
+console.log(newLib.stringNumber("123456789"));
+console.log(newLib.numberToDecimal(13.78965));
 
 
 
