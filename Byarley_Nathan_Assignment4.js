@@ -6,6 +6,8 @@
 //my library function
 var myLibrary = function() {
 
+
+//////////////////////////// Start String Functions ///////////////////////////////
 //Phone number verification
 	var phoneNumberCheck = function(phoneNumber) {
 	//local variables
@@ -84,6 +86,10 @@ var myLibrary = function() {
 		return message;
 	}
 
+//////////////////////////// End String Functions ///////////////////////////////
+
+//////////////////////////// Start Number Functions /////////////////////////////
+
 //string number function
 	var stringNumber = function(findNumber) {
 		var getNumber = findNumber;
@@ -99,11 +105,60 @@ var myLibrary = function() {
 		return decimalPlace;
 	}
 	
+	/*
 //fuzzy-match
+	var fuzzyMatch = function(intOne, intTwo, percent) {
+		//local variables
+		var percentCalculation = percent / 100;
+		var difference;
+		if(intOne > intTwo) {
+			difference = intOne - intTwo;
+		} else {
+			difference = intTwo - intOne;
+		}
+		var total = (difference/intTwo) * 100;
+		myMatch = (total <= percent);
+		return myMatch;
+	}
+	*/
+	
+//difference between 2 dates
+ var diffDates = function (startDate, endDate) {
+ 	var fullDay = 1000 * 60 * 60 * 24; //milliseconds, seconds, minutes, hours
+ 	var start = new Date(startDate);
+ 	//var today = diffDates.getDate();
+ 	var end = new Date(endDate);
+ 	var comp = Math.ceil((end - start) / fullDay);
+ 	return comp;
+ }
+	
+//send in string return as numeric
+
+
+
+
+
+//////////////////////////// End Number Functions ///////////////////////////////
+
+//////////////////////////// Start Array Functions ///////////////////////////////
+
+
+//find the smallest value
+
+
+
+
+//find total value of just numbers in an array
+
+
+
+//array of objects and the name of a key, 
+//return the array forted by the value that key in each of the objects
 	
 	
 	
-	
+
+//////////////////////////// End Array Functions ///////////////////////////////
 	
 //Return Object
 	return {
@@ -113,7 +168,9 @@ var myLibrary = function() {
 		"wordSplit"        : wordSplit,
 		"stringChange"     : stringChange,
 		"stringNumber"     : stringNumber,
-		"numberToDecimal"  : numberToDecimal
+		"numberToDecimal"  : numberToDecimal,
+		//"fuzzyMatch"       : fuzzyMatch,
+		"diffDates"        : diffDates
 	}//end return object
 	
 }//end library function
@@ -132,6 +189,8 @@ console.log(newLib.wordSplit("To day is the day"));
 console.log(newLib.stringChange("tic,tac,toe",",","/"));
 console.log(newLib.stringNumber("123456789"));
 console.log(newLib.numberToDecimal(13.78965));
+//console.log(newLib.fuzzyMatch(5,10,20));
+console.log(newLib.diffDates("May 29, 2013" , "September 14, 2013") + " Days until my 35th birthday");
 
 
 
