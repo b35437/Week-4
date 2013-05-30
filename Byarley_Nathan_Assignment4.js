@@ -130,10 +130,13 @@ var myLibrary = function() {
  	var end = new Date(endDate);
  	var comp = Math.ceil((end - start) / fullDay);
  	return comp;
- }
+ };
 	
 //send in string return as numeric
-
+ var convertString = function(convert) {
+ 	var selectedNumber = parseInt(convert);//used parseInt() function for the reason it will distingguish string from integers
+ 	return selectedNumber;
+ };
 
 
 
@@ -145,9 +148,16 @@ var myLibrary = function() {
 
 //find the smallest value
 
-
-
-
+var smallNumber = function(findMin) {
+	var min = findMin[0];
+	var len = findMin.length;
+	for(var i = 1; i < len; i++) {
+		if (findMin[i] < min) {
+			min = findMin[i]; 
+		}
+	}
+	return min;
+}
 //find total value of just numbers in an array
 
 
@@ -170,7 +180,9 @@ var myLibrary = function() {
 		"stringNumber"     : stringNumber,
 		"numberToDecimal"  : numberToDecimal,
 		//"fuzzyMatch"       : fuzzyMatch,
-		"diffDates"        : diffDates
+		"diffDates"        : diffDates,
+		"convertString"    : convertString,
+		"smallNumber"	   : smallNumber
 	}//end return object
 	
 }//end library function
@@ -191,6 +203,8 @@ console.log(newLib.stringNumber("123456789"));
 console.log(newLib.numberToDecimal(13.78965));
 //console.log(newLib.fuzzyMatch(5,10,20));
 console.log(newLib.diffDates("May 29, 2013" , "September 14, 2013") + " Days until my 35th birthday");
+console.log(newLib.convertString("12345"));
+console.log(newLib.smallNumber([9,5,12,8,2,46,8]));
 
 
 
