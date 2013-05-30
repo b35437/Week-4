@@ -42,7 +42,7 @@ var myLibrary = function() {
 		} else {
 			return false;
 		}
-	};
+	};// end emailCheck
 	
 //URL Verification function #3
 	var urlCheck = function(url) {
@@ -56,7 +56,7 @@ var myLibrary = function() {
 		} else {
 			return false;
 		}
-	};
+	};//end urlCheck
 	
 //Title Case function #4
 	var wordSplit = function(splitMessage) {
@@ -69,7 +69,7 @@ var myLibrary = function() {
 			newSplitMessage += splitMessage[s].substring(0, 1).toUpperCase() + splitMessage[s].substring(1, splitMessage[s].length) + ' ';
 		}
 		return newSplitMessage;
-	}
+	}//end worldSplit
 	
 // strings seperated by strings function #5
 	var stringChange = function(items, sepItems1, sepItems2) {
@@ -79,38 +79,39 @@ var myLibrary = function() {
 		var i = 0;
 		//while loop going through each argument
 		while(i < sepArray.length) {
+		//local variable within the loop
 			var newChange = sepArray[i];
 			i++;
 			message += newChange + sepItems2;//combines sctrings
 		}
 		return message;
-	}
+	}//end stringChange
 
 //////////////////////////// End String Functions ///////////////////////////////
 
 //////////////////////////// Start Number Functions /////////////////////////////
 
-// number of decimal places function #7
+// number of decimal places function #6
 	var numberToDecimal = function(place) {
 		var decimalPlace = place.toFixed(2);
 		
 		return decimalPlace;
 	}
 	
-//fuzzy-match function #8
-	var fuzzyMatch = function(intOne, intTwo, percent) {
+//fuzzy-match function #7
+	var fuzzyMatch = function(intOne, intTwo, percent) { // MAKEUP CREDIT: 	missing number argument, project 3
 		//local variables
 		var per = (intOne / intTwo) * 100;
 		//comparison and return the results
 		if((intOne >= intTwo && per >= percent) || (intOne < intTwo && per < percent)) {
 			return false;
 		} else {
-			return true;
+			return true; //MAKEUP CREDIT: missing number return, project 3
 		}
 	}
 	
 	
-//difference between 2 dates function #9
+//difference between 2 dates function #8
  var diffDates = function (startDate, endDate) {
  	//local variables
  	var fullDay = 1000 * 60 * 60 * 24; //milliseconds, seconds, minutes, hours
@@ -121,7 +122,7 @@ var myLibrary = function() {
  	return comp;
  };
 	
-//send in string return as numeric function #10
+//send in string return as numeric function #9
  var convertString = function(convert) {
  	var selectedNumber = parseInt(convert);//used parseInt() function for the reason it will distinguish string from integers
  	return selectedNumber;
@@ -135,7 +136,7 @@ var myLibrary = function() {
 //////////////////////////// Start Array Functions ///////////////////////////////
 
 
-//find the smallest value function #11
+//find the smallest value function #10
 var smallNumber = function(findMin) {
 	//local variables
 	var min = findMin[0];
@@ -150,7 +151,7 @@ var smallNumber = function(findMin) {
 }
 
 
-//find total value of just numbers in an array function #12
+//find total value of just numbers in an array function #11
 	var sumArray = function(findSum) {
 		//local variables
 		var sum = 0;
@@ -158,15 +159,19 @@ var smallNumber = function(findMin) {
 		//for loop find the the length 
 		for (var i = 0; i < findSum.length; i++) {
 			p = parseInt(findSum[i]);//search and find numariac data
-			if(!isNaN(p)) sum += p;//isNaN(Not a Number) function
+			if(!isNaN(p)) {
+				sum += p;
+			} else {
+				sum = 0;
+			}
 		}
 		return sum;
 	};
 	
-	//sort array based on key. function #13
+	//sort array based on key. function #12
 	var sortByKey = function(oldArray, key) {
 		return (oldArray.sort(function(a,b) {
-			return a[key] - b[key];
+			return a[key] - b[key]; //MAKEUP CREDIT: object return, project 3
 		}));
 	}
 	
@@ -193,8 +198,7 @@ var smallNumber = function(findMin) {
 }//end library function
 
 
-
-//Main Code
+//new myLibrary allows for inputed code to check functions against
 var newLib = new myLibrary();
 
 //output
