@@ -8,7 +8,7 @@ var myLibrary = function() {
 
 
 //////////////////////////// Start String Functions ///////////////////////////////
-//Phone number verification
+//Phone number verification function #1
 	var phoneNumberCheck = function(phoneNumber) {
 	//local variables
 		var start = phoneNumber.indexOf("-");//finds the first tac(dash)
@@ -27,7 +27,7 @@ var myLibrary = function() {
 	};//end phoneNumberCheck
 	
 	
-//Email verification
+//Email verification function #2
 	var emailCheck = function(email) {
 	//local variables
 		var at = email.indexOf("@");
@@ -44,7 +44,7 @@ var myLibrary = function() {
 		}
 	};
 	
-//URL Verification
+//URL Verification function #3
 	var urlCheck = function(url) {
 		//local variables
 		var http = url.substring(0, 5);//first 4 characters(http:)
@@ -58,7 +58,7 @@ var myLibrary = function() {
 		}
 	};
 	
-//Title Case
+//Title Case function #4
 	var wordSplit = function(splitMessage) {
 		//local variables
 		var newSplitMessage = '';
@@ -71,7 +71,7 @@ var myLibrary = function() {
 		return newSplitMessage;
 	}
 	
-// strings seperated by strings
+// strings seperated by strings function #5
 	var stringChange = function(items, sepItems1, sepItems2) {
 	//local variables
 		var message = "";
@@ -90,40 +90,27 @@ var myLibrary = function() {
 
 //////////////////////////// Start Number Functions /////////////////////////////
 
-//string number function
-	var stringNumber = function(findNumber) {
-		//local variables
-		var getNumber = findNumber;
-		newGetNumber = parseInt(findNumber);
-		
-		return newGetNumber;//return the found values
-	}
-
-
-// number of decimal places
+// number of decimal places function #7
 	var numberToDecimal = function(place) {
 		var decimalPlace = place.toFixed(2);
 		
 		return decimalPlace;
 	}
-	/*
-//fuzzy-match
+	
+//fuzzy-match function #8
 	var fuzzyMatch = function(intOne, intTwo, percent) {
 		//local variables
-		var percentCalculation = percent / 100;
-		var difference;
-		if(intOne > intTwo) {
-			difference = intOne - intTwo;
+		var per = (intOne / intTwo) * 100;
+		//comparison and return the results
+		if((intOne >= intTwo && per >= percent) || (intOne < intTwo && per < percent)) {
+			return false;
 		} else {
-			difference = intTwo - intOne;
+			return true;
 		}
-		var total = (difference/intTwo) * 100;
-		myMatch = (total <= percent);
-		return myMatch;
 	}
-	*/
 	
-//difference between 2 dates
+	
+//difference between 2 dates function #9
  var diffDates = function (startDate, endDate) {
  	//local variables
  	var fullDay = 1000 * 60 * 60 * 24; //milliseconds, seconds, minutes, hours
@@ -134,7 +121,7 @@ var myLibrary = function() {
  	return comp;
  };
 	
-//send in string return as numeric
+//send in string return as numeric function #10
  var convertString = function(convert) {
  	var selectedNumber = parseInt(convert);//used parseInt() function for the reason it will distinguish string from integers
  	return selectedNumber;
@@ -148,7 +135,7 @@ var myLibrary = function() {
 //////////////////////////// Start Array Functions ///////////////////////////////
 
 
-//find the smallest value
+//find the smallest value function #11
 var smallNumber = function(findMin) {
 	//local variables
 	var min = findMin[0];
@@ -163,7 +150,7 @@ var smallNumber = function(findMin) {
 }
 
 
-//find total value of just numbers in an array
+//find total value of just numbers in an array function #12
 	var sumArray = function(findSum) {
 		//local variables
 		var sum = 0;
@@ -175,26 +162,14 @@ var smallNumber = function(findMin) {
 		}
 		return sum;
 	};
-			
-/*
-
-//array of objects and the name of a key, 
-//return the array forted by the value that key in each of the objects
+	
+	//sort array based on key. function #13
 	var sortByKey = function(oldArray, key) {
-		//local variables
-		var sortKey = new Array();
-		var sortObject = {};
-		for (var i in oldArray) {
-			sortKey.push(i);//push the new data into place.
-			sortKey.sort(function(a,b){return a-b});//sort the information
-		}
-		for(var i in sortKey) {
-			sortObject[sortKey[i]] = oldArray[sortKey[i]];
-		}
-		return sortObject;
+		return (oldArray.sort(function(a,b) {
+			return a[key] - b[key];
+		}));
 	}
 	
-*/
 	
 
 //////////////////////////// End Array Functions ///////////////////////////////
@@ -206,14 +181,13 @@ var smallNumber = function(findMin) {
 		"urlCheck"		   : urlCheck,
 		"wordSplit"        : wordSplit,
 		"stringChange"     : stringChange,
-		"stringNumber"     : stringNumber,
 		"numberToDecimal"  : numberToDecimal,
-		//"fuzzyMatch"       : fuzzyMatch,
+		"fuzzyMatch"       : fuzzyMatch,
 		"diffDates"        : diffDates,
 		"convertString"    : convertString,
 		"smallNumber"	   : smallNumber,
 		"sumArray"		   : sumArray,
-		//"sortByKey"		   : sortByKey
+		"sortByKey"		   : sortByKey
 	}//end return object
 	
 }//end library function
@@ -229,14 +203,13 @@ console.log(newLib.emailCheck("nbyarley@fullsail.com"));
 console.log(newLib.urlCheck("http://www.perfectworld.com")); // correct URL
 console.log(newLib.wordSplit("To day is the day"));
 console.log(newLib.stringChange("tic,tac,toe",",","/"));
-console.log(newLib.stringNumber("123456789"));
 console.log(newLib.numberToDecimal(13.78965));
-//console.log(newLib.fuzzyMatch(5,10,20));
+console.log(newLib.fuzzyMatch(5,10,20));
 console.log(newLib.diffDates("May 29, 2013" , "September 14, 2013") + " Days until my 35th birthday");
 console.log(newLib.convertString("12345"));
 console.log(newLib.smallNumber([9,5,12,8,2,46,8]));
 console.log(newLib.sumArray(['games',2,'t',4,'b',6,'neverwinter',8,'l',10,'e','12']));
-//console.log(newLib.sortByKey([{a:2},{b:3},{a:1},{a:4}]));
+console.log(newLib.sortByKey([{a:2},{a:3},{a:1},{a:4}], "a"));
 
 
 
