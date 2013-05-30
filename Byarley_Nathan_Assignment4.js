@@ -47,8 +47,8 @@ var myLibrary = function() {
 //URL Verification
 	var urlCheck = function(url) {
 		//local variables
-		var http = url.substring(0, 5);//first 4 characters
-		var https = url.substring(0, 6);//first 5 characters
+		var http = url.substring(0, 5);//first 4 characters(http:)
+		var https = url.substring(0, 6);//first 5 characters(https:)
 	
 		//check to see if the variable matches the string
 		if (http === "http:" || https === "https:") {
@@ -56,7 +56,6 @@ var myLibrary = function() {
 		} else {
 			return false;
 		}
-	
 	};
 	
 //Title Case
@@ -64,8 +63,9 @@ var myLibrary = function() {
 		//local variables
 		var newSplitMessage = '';
 		splitMessage = splitMessage.toLowerCase().split(' ');//convert intire message to lowercase
-		//for loop to find each word
+		//for loop to find the start of each word
 		for(var s = 0; s < splitMessage.length; s++) {
+		//each word found, convert first letter to uppercase
 			newSplitMessage += splitMessage[s].substring(0, 1).toUpperCase() + splitMessage[s].substring(1, splitMessage[s].length) + ' ';
 		}
 		return newSplitMessage;
@@ -81,7 +81,7 @@ var myLibrary = function() {
 		while(i < sepArray.length) {
 			var newChange = sepArray[i];
 			i++;
-			message += newChange + sepItems2;
+			message += newChange + sepItems2;//combines sctrings
 		}
 		return message;
 	}
@@ -92,9 +92,11 @@ var myLibrary = function() {
 
 //string number function
 	var stringNumber = function(findNumber) {
+		//local variables
 		var getNumber = findNumber;
-		newGetNumber = parseFloat(findNumber);
-		return newGetNumber;
+		newGetNumber = parseInt(findNumber);
+		
+		return newGetNumber;//return the found values
 	}
 
 
@@ -104,7 +106,6 @@ var myLibrary = function() {
 		
 		return decimalPlace;
 	}
-	
 	/*
 //fuzzy-match
 	var fuzzyMatch = function(intOne, intTwo, percent) {
@@ -124,17 +125,18 @@ var myLibrary = function() {
 	
 //difference between 2 dates
  var diffDates = function (startDate, endDate) {
+ 	//local variables
  	var fullDay = 1000 * 60 * 60 * 24; //milliseconds, seconds, minutes, hours
  	var start = new Date(startDate);
  	//var today = diffDates.getDate();
  	var end = new Date(endDate);
- 	var comp = Math.ceil((end - start) / fullDay);
+ 	var comp = Math.ceil((end - start) / fullDay);//subtract end from start and devide by fullday
  	return comp;
  };
 	
 //send in string return as numeric
  var convertString = function(convert) {
- 	var selectedNumber = parseInt(convert);//used parseInt() function for the reason it will distingguish string from integers
+ 	var selectedNumber = parseInt(convert);//used parseInt() function for the reason it will distinguish string from integers
  	return selectedNumber;
  };
 
@@ -148,8 +150,10 @@ var myLibrary = function() {
 
 //find the smallest value
 var smallNumber = function(findMin) {
+	//local variables
 	var min = findMin[0];
 	var len = findMin.length;
+	//for loop search array for smallest number once found store in variable and return
 	for(var i = 1; i < len; i++) {
 		if (findMin[i] < min) {
 			min = findMin[i]; 
@@ -161,24 +165,28 @@ var smallNumber = function(findMin) {
 
 //find total value of just numbers in an array
 	var sumArray = function(findSum) {
+		//local variables
 		var sum = 0;
 		var p;
+		//for loop find the the length 
 		for (var i = 0; i < findSum.length; i++) {
-			p = parseInt(findSum[i]);
+			p = parseInt(findSum[i]);//search and find numariac data
 			if(!isNaN(p)) sum += p;//isNaN(Not a Number) function
 		}
 		return sum;
 	};
 			
+/*
 
 //array of objects and the name of a key, 
 //return the array forted by the value that key in each of the objects
 	var sortByKey = function(oldArray, key) {
+		//local variables
 		var sortKey = new Array();
 		var sortObject = {};
 		for (var i in oldArray) {
 			sortKey.push(i);//push the new data into place.
-			sortKey.sort(function(a,b){return a-b});
+			sortKey.sort(function(a,b){return a-b});//sort the information
 		}
 		for(var i in sortKey) {
 			sortObject[sortKey[i]] = oldArray[sortKey[i]];
@@ -186,6 +194,7 @@ var smallNumber = function(findMin) {
 		return sortObject;
 	}
 	
+*/
 	
 
 //////////////////////////// End Array Functions ///////////////////////////////
@@ -204,7 +213,7 @@ var smallNumber = function(findMin) {
 		"convertString"    : convertString,
 		"smallNumber"	   : smallNumber,
 		"sumArray"		   : sumArray,
-		"sortByKey"		   : sortByKey
+		//"sortByKey"		   : sortByKey
 	}//end return object
 	
 }//end library function
@@ -218,7 +227,6 @@ var newLib = new myLibrary();
 console.log(newLib.phoneNumberCheck("607-372-5008"));
 console.log(newLib.emailCheck("nbyarley@fullsail.com"));
 console.log(newLib.urlCheck("http://www.perfectworld.com")); // correct URL
-console.log(newLib.urlCheck("www.perfectworld.com"));//incorrect URL
 console.log(newLib.wordSplit("To day is the day"));
 console.log(newLib.stringChange("tic,tac,toe",",","/"));
 console.log(newLib.stringNumber("123456789"));
@@ -228,7 +236,7 @@ console.log(newLib.diffDates("May 29, 2013" , "September 14, 2013") + " Days unt
 console.log(newLib.convertString("12345"));
 console.log(newLib.smallNumber([9,5,12,8,2,46,8]));
 console.log(newLib.sumArray(['games',2,'t',4,'b',6,'neverwinter',8,'l',10,'e','12']));
-console.log(newLib.sortByKey([{a:2},{b:3},{a:1},{a:4}]));
+//console.log(newLib.sortByKey([{a:2},{b:3},{a:1},{a:4}]));
 
 
 
