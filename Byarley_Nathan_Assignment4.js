@@ -11,9 +11,9 @@ var myLibrary = function() {
 //Phone number verification
 	var phoneNumberCheck = function(phoneNumber) {
 	//local variables
-		var start = phoneNumber.indexOf("-");//finds the first tac
-		var end = phoneNumber.lastIndexOf("-"); //finds second tac
-		var firstSet = phoneNumber.substring(0, start);//first 3 number
+		var start = phoneNumber.indexOf("-");//finds the first tac(dash)
+		var end = phoneNumber.lastIndexOf("-"); //finds second tac(dash)
+		var firstSet = phoneNumber.substring(0, start);//first 3 numbers
 		var secondSet = phoneNumber.substring(4, end);//second 3 numbers
 		var thirdSet = phoneNumber.substring(8, 12);//last 4 numbers
 		var numberCheck = firstSet + "-" + secondSet + "-" + + thirdSet;
@@ -31,12 +31,12 @@ var myLibrary = function() {
 	var emailCheck = function(email) {
 	//local variables
 		var at = email.indexOf("@");
-		var handle = email.substring(0, at);
-		var dsn = email.substring(at + 1, email.indexOf("."));
-		var ending = email.substring(email.indexOf(".") + 1, email.length);
-		var verifyEmail = handle + "@" + dsn + "." + ending;
+		var handle = email.substring(0, at);//string from start point to @ 
+		var dns = email.substring(at + 1, email.indexOf("."));//also known as IP address
+		var ending = email.substring(email.indexOf(".") + 1, email.length);//the .com / .net / .edu
+		var verifyEmail = handle + "@" + dns + "." + ending;
 		
-		//check the format of email matches verifyEmail
+		//check the format of the entered email with verifyEmail
 		if(email === verifyEmail) {
 			return true;
 		} else {
@@ -147,7 +147,6 @@ var myLibrary = function() {
 
 
 //find the smallest value
-
 var smallNumber = function(findMin) {
 	var min = findMin[0];
 	var len = findMin.length;
@@ -158,13 +157,34 @@ var smallNumber = function(findMin) {
 	}
 	return min;
 }
+
+
 //find total value of just numbers in an array
-
-
+	var sumArray = function(findSum) {
+		var sum = 0;
+		var p;
+		for (var i = 0; i < findSum.length; i++) {
+			p = parseInt(findSum[i]);
+			if(!isNaN(p)) sum += p;//isNaN(Not a Number) function
+		}
+		return sum;
+	};
+			
 
 //array of objects and the name of a key, 
 //return the array forted by the value that key in each of the objects
-	
+	var sortByKey = function(oldArray, key) {
+		var sortKey = new Array();
+		var sortObject = {};
+		for (var i in oldArray) {
+			sortKey.push(i);//push the new data into place.
+			sortKey.sort(function(a,b){return a-b});
+		}
+		for(var i in sortKey) {
+			sortObject[sortKey[i]] = oldArray[sortKey[i]];
+		}
+		return sortObject;
+	}
 	
 	
 
@@ -182,7 +202,9 @@ var smallNumber = function(findMin) {
 		//"fuzzyMatch"       : fuzzyMatch,
 		"diffDates"        : diffDates,
 		"convertString"    : convertString,
-		"smallNumber"	   : smallNumber
+		"smallNumber"	   : smallNumber,
+		"sumArray"		   : sumArray,
+		"sortByKey"		   : sortByKey
 	}//end return object
 	
 }//end library function
@@ -205,6 +227,8 @@ console.log(newLib.numberToDecimal(13.78965));
 console.log(newLib.diffDates("May 29, 2013" , "September 14, 2013") + " Days until my 35th birthday");
 console.log(newLib.convertString("12345"));
 console.log(newLib.smallNumber([9,5,12,8,2,46,8]));
+console.log(newLib.sumArray(['games',2,'t',4,'b',6,'neverwinter',8,'l',10,'e','12']));
+console.log(newLib.sortByKey([{a:2},{b:3},{a:1},{a:4}]));
 
 
 
